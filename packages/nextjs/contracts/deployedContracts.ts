@@ -4,6 +4,1190 @@
  */
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
-const deployedContracts = {} as const;
+const deployedContracts = {
+  31337: {
+    Gomoku: {
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnableInvalidOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "OwnableUnauthorizedAccount",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ReentrancyGuardReentrantCall",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+          ],
+          name: "GameCancelled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "player1",
+              type: "address",
+            },
+          ],
+          name: "GameCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "winner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "isDraw",
+              type: "bool",
+            },
+          ],
+          name: "GameFinished",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "player1",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "player2",
+              type: "address",
+            },
+          ],
+          name: "GameJoined",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint8",
+              name: "x",
+              type: "uint8",
+            },
+            {
+              indexed: false,
+              internalType: "uint8",
+              name: "y",
+              type: "uint8",
+            },
+            {
+              indexed: false,
+              internalType: "enum Gomoku.PieceType",
+              name: "pieceType",
+              type: "uint8",
+            },
+          ],
+          name: "MoveMade",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "BOARD_SIZE",
+          outputs: [
+            {
+              internalType: "uint8",
+              name: "",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "WIN_CONDITION",
+          outputs: [
+            {
+              internalType: "uint8",
+              name: "",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+          ],
+          name: "cancelGame",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "createGame",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "createPracticeGame",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "gameMoves",
+          outputs: [
+            {
+              internalType: "uint8",
+              name: "x",
+              type: "uint8",
+            },
+            {
+              internalType: "uint8",
+              name: "y",
+              type: "uint8",
+            },
+            {
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+            {
+              internalType: "enum Gomoku.PieceType",
+              name: "pieceType",
+              type: "uint8",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "games",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "player1",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "player2",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "currentPlayer",
+              type: "address",
+            },
+            {
+              internalType: "enum Gomoku.GameStatus",
+              name: "status",
+              type: "uint8",
+            },
+            {
+              internalType: "address",
+              name: "winner",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "createdAt",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "lastMoveAt",
+              type: "uint256",
+            },
+            {
+              internalType: "uint8",
+              name: "moveCount",
+              type: "uint8",
+            },
+            {
+              internalType: "bool",
+              name: "isPracticeMode",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+          ],
+          name: "getBoard",
+          outputs: [
+            {
+              internalType: "enum Gomoku.PieceType[15][15]",
+              name: "",
+              type: "uint8[15][15]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+          ],
+          name: "getGame",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "gameId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "player1",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "player2",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "currentPlayer",
+                  type: "address",
+                },
+                {
+                  internalType: "enum Gomoku.GameStatus",
+                  name: "status",
+                  type: "uint8",
+                },
+                {
+                  internalType: "address",
+                  name: "winner",
+                  type: "address",
+                },
+                {
+                  internalType: "uint256",
+                  name: "createdAt",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "lastMoveAt",
+                  type: "uint256",
+                },
+                {
+                  internalType: "enum Gomoku.PieceType[15][15]",
+                  name: "board",
+                  type: "uint8[15][15]",
+                },
+                {
+                  internalType: "uint8",
+                  name: "moveCount",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bool",
+                  name: "isPracticeMode",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct Gomoku.Game",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+          ],
+          name: "getGameMoves",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint8",
+                  name: "x",
+                  type: "uint8",
+                },
+                {
+                  internalType: "uint8",
+                  name: "y",
+                  type: "uint8",
+                },
+                {
+                  internalType: "address",
+                  name: "player",
+                  type: "address",
+                },
+                {
+                  internalType: "enum Gomoku.PieceType",
+                  name: "pieceType",
+                  type: "uint8",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct Gomoku.Move[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+          ],
+          name: "getPlayerGames",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+          ],
+          name: "getPlayerStats",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "wins",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "losses",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getWaitingGames",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+          ],
+          name: "joinGame",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint8[]",
+              name: "xCoords",
+              type: "uint8[]",
+            },
+            {
+              internalType: "uint8[]",
+              name: "yCoords",
+              type: "uint8[]",
+            },
+          ],
+          name: "makeBatchMoves",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "gameId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint8",
+              name: "x",
+              type: "uint8",
+            },
+            {
+              internalType: "uint8",
+              name: "y",
+              type: "uint8",
+            },
+          ],
+          name: "makeMove",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "playerGames",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "playerLosses",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "playerWins",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "waitingGames",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        owner: "@openzeppelin/contracts/access/Ownable.sol",
+        renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
+        transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",
+      },
+    },
+    YourContract: {
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "gasUsed",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "gasPrice",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "gasCost",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "functionName",
+              type: "string",
+            },
+          ],
+          name: "GasUsageRecorded",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "greetingSetter",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "newGreeting",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "premium",
+              type: "bool",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "value",
+              type: "uint256",
+            },
+          ],
+          name: "GreetingChange",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_newGreeting",
+              type: "string",
+            },
+          ],
+          name: "estimateSetGreetingGas",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "estimatedGas",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "estimatedCost",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getCurrentGasInfo",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "gasPrice",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "gasLimit",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "gasUsed",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getGasStatistics",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "totalRecords",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "averageGasUsed",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "averageGasPrice",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_count",
+              type: "uint256",
+            },
+          ],
+          name: "getRecentGasHistory",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "gasUsed",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "gasPrice",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "gasCost",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "txOrigin",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "functionName",
+                  type: "string",
+                },
+              ],
+              internalType: "struct YourContract.GasInfo[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getUserGasHistory",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "gasUsed",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "gasPrice",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "gasCost",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address",
+                  name: "txOrigin",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "functionName",
+                  type: "string",
+                },
+              ],
+              internalType: "struct YourContract.GasInfo[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "globalGasHistory",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "gasUsed",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "gasPrice",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "gasCost",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "txOrigin",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "functionName",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "greeting",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "premium",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_newGreeting",
+              type: "string",
+            },
+          ],
+          name: "setGreeting",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalGasRecords",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "userGasHistory",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "gasUsed",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "gasPrice",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "gasCost",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "txOrigin",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "functionName",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "userGreetingCounter",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "withdraw",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+  },
+} as const;
 
 export default deployedContracts satisfies GenericContractsDeclaration;

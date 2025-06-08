@@ -28,8 +28,8 @@ const scaffoldConfig = {
   // If you want to use a different RPC for a specific network, you can add it here.
   // The key is the chain ID, and the value is the HTTP RPC URL
   rpcOverrides: {
-    // Example:
-    // [chains.mainnet.id]: "https://mainnet.buidlguidl.com",
+    // Hardhat local network for LAN access
+    [chains.hardhat.id]: process.env.NEXT_PUBLIC_HARDHAT_RPC_URL || "http://127.0.0.1:8545",
   },
 
   // This is ours WalletConnect's default project ID.
