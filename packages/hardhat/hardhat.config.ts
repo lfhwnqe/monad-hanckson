@@ -56,6 +56,16 @@ const config: HardhatUserConfig = {
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
     },
+    monadTestnet: {
+      url: "https://testnet-rpc.monad.xyz",
+      accounts: [deployerPrivateKey],
+      chainId: 10143, // Monad 测试网链 ID，可能会有变化，请查看官方文档
+    },
+    monad: {
+      url: "https://rpc.monad.xyz",
+      accounts: [deployerPrivateKey],
+      chainId: 1024, // Monad 主网链 ID
+    },
     localhost: {
       url: "http://127.0.0.1:8545",
       chainId: 31337,

@@ -46,6 +46,10 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   [chains.hardhat.id]: {
     color: "#b8af0c",
   },
+  // Monad testnet
+  [10143]: {
+    color: "#3498db",
+  },
   [chains.mainnet.id]: {
     color: "#ff8b9e",
   },
